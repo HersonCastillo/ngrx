@@ -1,11 +1,11 @@
 import { IUserState } from './user.state';
 
-export interface AppState {
+export interface IAppState {
   user: IUserState;
 }
 
-export const initialState: AppState = {
+export const initialState: IAppState = {
   user: null
 };
 
-export const getInitialState = (): AppState => initialState;
+export const getInitialState = (): IAppState => initialState;
