@@ -1,25 +1,18 @@
-import { IUserState, initialUserState } from '../states/user.state';
+import { IUserState, userAdapter, initialUserState } from '../states/user.state';
 import { UserActions, EUserActions } from '../actions/user.actions';
 
 export function userReducer(
-  state: IUserState = initialUserState,
+  state = userAdapter.getInitialState(initialUserState),
   action: UserActions
 ): IUserState {
   switch (action.type) {
     case EUserActions.GetUsers:
-      return {
-        ...state
-      };
+      return userAdapter.addAll([], state);
     case EUserActions.GetUsersSuccess:
-      return {
-        ...state,
-        users: action.payload,
-        error: null
-      };
+      return userAdapter.addAll(action.payload, state);
     case EUserActions.GetUsersFailed:
       return {
         ...state,
-        users: [],
         error: action.error
       };
     default:

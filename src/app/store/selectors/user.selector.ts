@@ -1,10 +1,13 @@
-import { createSelector } from '@ngrx/store';
-import { IAppState } from '../states/app.state';
-import { IUserState } from '../states/user.state';
+import { userAdapter, IUserState } from '../states/user.state';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-export const getUserState = (state: IAppState) => state.user;
+const {
+  selectAll
+} = userAdapter.getSelectors();
+
+export const getUsersFactory = createFeatureSelector<IUserState>('user');
 
 export const getUsers = createSelector(
-  getUserState,
-  (state: IUserState) => state.users
+  getUsersFactory,
+  selectAll
 );
