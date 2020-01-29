@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { getUsers } from 'src/app/store/selectors/user.selector';
+import { getUsers, getUserById } from 'src/app/store/selectors/user.selector';
 import { IAppState } from 'src/app/store/states/app.state';
 import { GetUsers } from 'src/app/store/actions/user.actions';
 import { IUser } from '../../interfaces/user';
@@ -35,4 +35,7 @@ export class LayoutComponent implements OnInit {
     this.filteredUsers = this.users.filter(user => user.name.toLowerCase().includes(value.toLowerCase()));
   }
 
+  searchIdUser(id: number): void {
+    this.store.pipe(select(getUserById(id))).subscribe(r => console.log(r));
+  }
 }
