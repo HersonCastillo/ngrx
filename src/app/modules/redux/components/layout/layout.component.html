@@ -1,8 +1,13 @@
 <h1>Search a user</h1>
 <input type="text" name="user" id="user" (keyup)="onKeyUp($event)">
+<ul>
+  <li *ngFor="let user of filteredUsers">
+    {{user.name}}
+  </li>
+</ul>
 <h1>All Users</h1>
 <ul>
-  <li *ngFor="let user of users$ | async">
+  <li *ngFor="let user of users">
     {{user.name}}
   </li>
 </ul>
