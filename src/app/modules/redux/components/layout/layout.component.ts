@@ -21,4 +21,9 @@ export class LayoutComponent implements OnInit {
     this.store.dispatch(new GetUsers());
   }
 
+  onKeyUp(event: KeyboardEvent): void {
+    const value = (event.target as any).value;
+
+  }
+
 }
