@@ -2,4 +2,4 @@
 
 Redux implementation test
 
-# Commit 1
+# Commit 1 - Pull request created
